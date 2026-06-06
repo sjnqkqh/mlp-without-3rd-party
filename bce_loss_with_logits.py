@@ -24,3 +24,7 @@ class BceLossWithLogits:
 
         loss_val = -(self.y * math.log(p) + (1.0 - self.y) * math.log(1.0 - p))
         return loss_val
+
+    def backward(self):
+        d_logit = self.prob - self.y
+        return [d_logit] # 모델이 예상한 답 - 실제 답
