@@ -9,8 +9,14 @@ class MlpModel:
         self.activation = ReLuActivation()
         self.linear_2 = LinearLayer(in_features=32, out_features=1)
 
-    def forward(self, x: list):
-        x = self.linear_1.forward(x)
-        x = self.activation.forward(x)
-        x = self.linear_2.forward(x)
-        return x
+    def forward(self, forward_value: list):
+        forward_value = self.linear_1.forward(forward_value)
+        forward_value = self.activation.forward(forward_value)
+        forward_value = self.linear_2.forward(forward_value)
+        return forward_value
+    
+    def backward(self, root_backward_value):
+        backward_value = self.linear_2.backward(root_backward_value)
+        backward_value = self.activation.backward(backward_value)
+        backward_value = self.linear_1.backward(backward_value)
+        return backward_value
