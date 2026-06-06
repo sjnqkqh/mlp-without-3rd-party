@@ -8,7 +8,7 @@ class GradientDescentOptimizer:
             for i in range(layer.out_features):
                 for j in range(layer.in_features):
                     # 가중치 조절
-                    layer.weight[i][j] -= self.lr * layer.d_weight[j]
+                    layer.weights[i][j] -= self.lr * layer.d_weight[i][j]
 
             for i in range(layer.out_features):
                 layer.bias[i] -= self.lr * layer.d_bias[i]
