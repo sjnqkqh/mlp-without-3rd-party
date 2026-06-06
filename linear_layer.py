@@ -1,4 +1,5 @@
 import random
+import math
 
 random.seed(42)
 
@@ -8,12 +9,13 @@ class LinearLayer:
         self.in_features = in_features
         self.out_features = out_features
 
-        # 초기 가중치 세팅
+        # 초기 가중치 세팅 (He 초기화)
+        std = math.sqrt(2.0 / in_features)
         self.weights = []
         for _ in range(out_features):
-            row = [random.uniform(-0.1, 0.1) for _ in range(in_features)]
+            row = [random.gauss(0.0, std) for _ in range(in_features)]
             self.weights.append(row)
-        self.bias = [random.uniform(-0.1, 0.1) for _ in range(out_features)]
+        self.bias = [0.0 for _ in range(out_features)]
 
         self.forward_value = None  # 순전파 밸류 기록
         self.d_weight = []
