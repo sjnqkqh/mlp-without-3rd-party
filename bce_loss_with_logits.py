@@ -27,4 +27,4 @@ class BceLossWithLogits:
 
     def backward(self):
         d_logit = self.prob - self.y
-        return [d_logit] # 모델이 예상한 답 - 실제 답
+        return [d_logit] # 모델이 예상한 답 - 실제 답, 기울기 미분
