@@ -18,8 +18,8 @@ class LinearLayer:
         self.bias = [0.0 for _ in range(out_features)]
 
         self.forward_value = None  # 순전파 밸류 기록
-        self.d_weight = []
-        self.d_bias = []
+        self.d_weight = [] # 역전파 - 가중치 수정용
+        self.d_bias = [] # 역전파 - bias 수정용
 
     def forward(self, x):
         self.forward_value = x
